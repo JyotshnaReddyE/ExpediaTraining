@@ -1,0 +1,244 @@
+Collections:
+1.	define Collection?
+Collection is a Built-in interface from java.util package and which is root of Java Collection Framework.
+Collection is extended into the following Sub-Interfaces:
+1.Set
+2. List
+3. Queue
+
+1.	Set<E>: 
+ Set<E>  is an interface from java.util package and which organizes elements without index values and which cannot hold duplicate elements.
+The following are some important methods of Set<E>:
+
+public abstract int size();
+public abstarct boolean isEmpty();
+public abstract boolean contains(java.lang.Object);
+public abstract boolean add(E);
+public abstract boolean remove(java.lang.Object)
+public abstract java.lang.Object[] toArray();
+
+public abstract java.util.Iterator<E> iterator();
+public java.util.Spliterator<E> spliterator();
+
+The following are the implementation classes of Set<E>
+(a)HashSet<E>
+(b)LinkedHashSet<E>
+(c)TreeSet<E>
+
+HashSet<E> displays elements without any order.
+LinkedHashSet<E> display elements in insertion order
+TreeSet<E> display elements automatically in Ascending order
+
+2.	List<E>
+List<E> is an interface from java.util package and which organizes elements based on index values and which can hold duplicate elements.
+
+The following are some important methods of List<E>:
+public abstract int size();
+public abstarct boolean isEmpty();
+public abstract boolean contains(java.lang.Object);
+public abstract boolean add(E);
+public abstract boolean remove(java.lang.Object)
+public abstract java.lang.Object[] toArray();
+
+public abstract E get(int);
+public abstract E set(int,E);
+public abstract void add(int,E);
+public abstract E remove(int);
+public abstract int indexOf(java.lang.Object);
+public abstract int lastIndexOf(java.lang.Object);
+
+public abstract java.util.Iterator<E> iterator();
+public abstract java.util.ListIterator<E> listIterator();
+public java.util.Spliterator<E> spliterator();
+
+The following are the implementation classes of List<E>
+(a)ArrayList<E>:
+ArrayList<E> organizes elements in Sequence and which is NonSynchronized class.
+
+(b)LinkedList<E>:
+LinkedList<E> organizes elements in NonSequence and which is also NonSynchronized class.
+Elements in LinkedList<E> are available in the form of ‘nodes’.
+This LinkedList<E> node is divided into the following three parts:
+(i)Previous Node Address
+(ii)Data Value
+(iii)Next Node Address
+(c)Vector<E>: 
+Vector<E> is used in Connection pooling process.
+
+The process of organizing multiple pre-initialized database connections is known as Connection pooling process.
+The default capacity of Vector<E> is 10 and which increases dynamically at runtime or execution time, by doubling the capacity.
+
+define Stack<E>
+Stack<E> is a class from java.util package and which is ChildClass of Vector<E>.
+The elements in Stack<E> are organized based on the algorithm First-In-Last-Out.
+
+The following are some important methods of Stack<E>:
+
+public E push(E);
+public synchronized E pop();
+public synchronized E peek();
+public boolean empty();
+public synchronized int search(java.lang.Object);
+=>Stack<E>
+
+3.	Queue<E>:
+
+Queue<E> is an interface from java.util package and which organizes elements based on the algorithm First-In-First-Out.
+
+Deque<E>: 
+Deque<E> is also an interface extended from Queue<E>  and in which the elements are organized on both ends.(Double-ended-queue)
+
+The following are the implementations of Queue<E>and Deque<E>:
+(a)PriorityQueue<E>
+(b)ArrayDeque<E>
+(c)LinkedList<E>
+
+(a)PriorityQueue<E>:
+PriorityQueue<E>will organize elements based on elements Priority.
+In real-time PriorityQueue<E>is used to hold the threads executing based on priorities.
+(b)ArrayDeque<E>:
+ArrayDeque<E>organizes elements on both ends and elements are available in sequence.
+(c)LinkedList<E>:
+LinkedList<E>also organizes elements on both ends and available in NonSequence.
+
+
+Spring Boot Annotations:
+Spring Boot Annotations is a form of metadata that provides data about a program. In other words, annotations are used to provide supplemental information about a program. It is not a part of the application that we develop. It does not have a direct effect on the operation of the code they annotate. It does not change the action of the compiled program.
+
+Core Spring Framework Annotations:
+
+1.	@Required: It applies to the bean setter method. It indicates that the annotated bean must be populated at configuration time with the required property, else it throws an exception BeanInitilizationException.
+	       Example:
+public class Machine   
+{  
+private Integer cost;  
+@Required  
+public void setCost(Integer cost)   
+{  
+this.cost = cost;  
+}  
+public Integer getCost()   
+{  
+return cost;  
+}     
+} 
+
+
+2.	@Autowired: Spring provides annotation-based auto-wiring by providing @Autowired annotation. It is used to autowire spring bean on setter methods, instance variable, and constructor. When we use @Autowired annotation, the spring container auto-wires the bean by matching datatype.
+Example
+@Component  
+public class Customer  
+{  
+private Person person;  
+@Autowired  
+public Customer(Person person)   
+{   
+this.person=person;  
+}  
+}  
+3.	@Configuration: It is a class-level annotation. The class annotated with @Configuration used by Spring Containers as a source of bean definitions.
+Example
+@Configuration  
+public class Vehicle  
+{  
+@BeanVehicle engine()  
+{  
+return new Vehicle();  
+}  
+}  
+4.	@ComponentScan: It is used when we want to scan a package for beans. It is used with the annotation @Configuration. We can also specify the base packages to scan for Spring Components.
+Example
+@ComponentScan(basePackages = "com.javatpoint")  
+@Configuration  
+public class ScanComponent  
+{  
+// ...  
+}  
+5.	@Bean: It is a method-level annotation. It is an alternative of XML <bean> tag. It tells the method to produce a bean to be managed by Spring Container.
+Example:
+@Bean  
+public BeanExample beanExample()   
+{  
+return new BeanExample ();  
+}  
+6.	@Component: It is a class-level annotation. It is used to mark a Java class as a bean. A Java class annotated with @Component is found during the classpath. The Spring Framework pick it up and configure it in the application context as a Spring Bean.
+Example
+@Component  
+public class Student  
+{  
+.......  
+}  
+7.	@Controller: The @Controller is a class-level annotation. It is a specialization of @Component. It marks a class as a web request handler. It is often used to serve web pages. By default, it returns a string that indicates which route to redirect. It is mostly used with @RequestMapping annotation.
+Example
+@Controller  
+@RequestMapping("books")  
+public class BooksController   
+{  
+@RequestMapping(value = "/{name}", method = RequestMethod.GET)  
+public Employee getBooksByName()   
+{  
+return booksTemplate;  
+}  
+      }  
+8.	@Service: It is also used at class level. It tells the Spring that class contains the business logic.
+Example:
+package com.javatpoint;  
+@Service  
+public class TestService  
+{  
+public void service1()  
+{  
+//business code  
+}  
+} 
+9.	@Repository: It is a class-level annotation. The repository is a DAOs (Data Access Object) that access the database directly. The repository does all the operations related to the database.
+Example:
+package com.javatpoint;  
+@Repository   
+public class TestRepository  
+{  
+public void delete()  
+{     
+//persistence code  
+}  
+}  
+Spring Boot Annotations:
+1.	@EnableAutoConfiguration: It auto-configures the bean that is present in the classpath and configures it to run the methods. The use of this annotation is reduced in Spring Boot 1.2.0 release because developers provided an alternative of the annotation, i.e. @SpringBootApplication.
+
+2.	@SpringBootApplication: It is a combination of three annotations @EnableAutoConfiguration, @ComponentScan, and @Configuration.
+
+Spring MVC and REST Annotations:
+1.	@RequestMapping: It is used to map the web requests. It has many optional elements like consumes, header, method, name, params, path, produces, and value. We use it with the class as well as the method.
+Example:
+@Controller  
+public class BooksController   
+{  
+@RequestMapping("/computer-science/books")  
+public String getAllBooks(Model model)  
+{  
+//application code  
+return "bookList";  
+}  
+2.	@GetMapping: It maps the HTTP GET requests on the specific handler method. It is used to create a web service endpoint that fetches It is used instead of using: @RequestMapping(method = RequestMethod.GET)
+3.	@PostMapping: It maps the HTTP POST requests on the specific handler method. It is used to create a web service endpoint that creates It is used instead of using: @RequestMapping(method = RequestMethod.POST)
+4.	@PutMapping: It maps the HTTP PUT requests on the specific handler method. It is used to create a web service endpoint that creates or updates It is used instead of using: @RequestMapping(method = RequestMethod.PUT)
+5.	@DeleteMapping: It maps the HTTP DELETE requests on the specific handler method. It is used to create a web service endpoint that deletes a resource. It is used instead of using: @RequestMapping(method = RequestMethod.DELETE)
+6.	@PatchMapping: It maps the HTTP PATCH requests on the specific handler method. It is used instead of using: @RequestMapping(method = RequestMethod.PATCH)
+7.	@RequestBody: It is used to bind HTTP request with an object in a method parameter. Internally it uses HTTP MessageConverters to convert the body of the request. When we annotate a method parameter with @RequestBody, the Spring framework binds the incoming HTTP request body to that parameter.
+8.	@ResponseBody: It binds the method return value to the response body. It tells the Spring Boot Framework to serialize a return an object into JSON and XML format.
+9.	@PathVariable: It is used to extract the values from the URI. It is most suitable for the RESTful web service, where the URL contains a path variable. We can define multiple @PathVariable in a method.
+10.	@RequestParam: It is used to extract the query parameters form the URL. It is also known as a query parameter. It is most suitable for web applications. It can specify default values if the query parameter is not present in the URL.
+11.	@RequestHeader: It is used to get the details about the HTTP request headers. We use this annotation as a method parameter. The optional elements of the annotation are name, required, value, defaultValue. For each detail in the header, we should specify separate annotations. We can use it multiple time in a method
+12.	@RestController: It can be considered as a combination of @Controller and @ResponseBody annotations. The @RestController annotation is itself annotated with the @ResponseBody annotation. It eliminates the need for annotating each method with @ResponseBody.
+13.	@RequestAttribute: It binds a method parameter to request attribute. It provides convenient access to the request attributes from a controller method. With the help of @RequestAttribute annotation, we can access objects that are populated on the server-side.
+2.	Postman GET, POST, PUT, DELETE:
+You can make requests to APIs in Postman. An API request allows you to retrieve data from a data source, or to send data. APIs run on web servers, and expose endpoints to support the operations client applications use to provide their functionality.
+Each API request uses an HTTP method. The most common methods are GET, POST, PATCH, PUT, and DELETE.
+GET methods retrieve data from an API.
+POST sends new data to an API.
+PATCH and PUT methods update existing data.
+DELETE removes existing data.
+In Postman you can make API requests and examine the responses without using a terminal or writing any code. When you create a request and click Send, the API response appears inside the Postman user interface.
+	
+
+
